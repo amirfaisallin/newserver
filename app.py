@@ -8,8 +8,9 @@ import os
 from functools import wraps
 
 app = Flask(__name__)
-app.secret_key = secrets.token_hex(32)
+app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key")
 CORS(app)
+
 
 # Database setup
 DB_NAME = 'license_management.db'
